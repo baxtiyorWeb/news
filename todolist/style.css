@@ -1,0 +1,14 @@
+h1{
+	background: green;
+}
+body{
+	background: green;
+}
+li{
+	width: 200px;
+	display: flex;
+	justify-content: space-between;
+}
+span{
+	cursor: pointer;
+}

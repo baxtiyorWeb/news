@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: #123e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .todo {
+        width: 500px;
+        height: 500px;
+        box-shadow: 0px 3px 10px 5px ;
+        text-align: center;
+        overflow: scroll;
+    }
+
+    #text {
+        width: 350px;
+        padding: 10px;
+        border-color: transparent;
+        outline: none;
+        font-size: 20px;
+        color: darkorange;
+        background-color: #333333;
+        transition: 0.5s ease;
+    }
+
+    #text:focus {
+        border: 2px solid white;
+        box-shadow: 0px 0px 3px 2px white,
+            inset 2px 2px 5px 2px rgb(255, 255, 255),
+            inset 2px 2px 5px 2px white,
+            0px 10px 2px 8px red,
+            5px 10px 5px 10px green;
+    }
+    ul li{
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #000;
+        background-color: darkorange;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+
+
+.send{
+    width: 140px;
+    height: 35px;
+
+    border: 2px solid red;
+    outline: none;
+    letter-spacing: 10.3px;
+    background-color: transparent;
+    cursor: pointer;
+    color: greenyellow;
+    font-size: 23px;
+}
+.appList{
+    width: 100%;
+    background-color: red;
+    position: relative;
+    top: 100px;
+}
+.element{
+    position: fixed;
+    top: 0;
+}
+</style>
+
+<body>
+    <div class="element">
+        <input type="text" id="text">
+        <button class="send">send</button>
+    </div>
+    <div class="todo">
+        <div class="appList">
+
+        </div>
+    </div>
+
+    <script>
+        let send = document.querySelector('.send')
+        let input = document.querySelector('#text')
+        let appList = document.querySelector('.appList')
+        fetch('http://localhost:3000/name')
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+
+        send.addEventListener('click', async function (e) {
+            if (input.value !== "") {
+                e.preventDefault()
+                let data = {
+                    data: input.value,
+                    span: '❌'
+
+                };
+
+                await fetch(`http://localhost:3000/name`, {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                input.value = ''
+
+            }
+
+        })
+
+        let ul = document.createElement('ul')
+        fetch('http://localhost:3000/name')
+            .then((res) => res.json())
+            .then((data) => getdata(data))
+        function getdata(data) {
+            console.log(data);
+            data.forEach(item => {
+
+                let li = document.createElement('li')
+                let spans = document.createElement('span')
+                appList.append(ul)
+                ul.append(li)
+                li.appendChild(spans)
+                li.innerHTML = item.data;
+                spans.innerHTML = item.span
+
+            })
+        };
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

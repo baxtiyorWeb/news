@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        .counter {
+            width: 500px;
+            height: 500px;
+            background-color: darkblue;
+            margin: 40px auto;
+            box-shadow: 3px 4px 3px 5px royalblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .countelemnt {
+            width: 100%;
+            position: absolute;
+            left: 0%;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 80px;
+        }
+
+        .element {
+            width: 300px;
+            height: 300px;
+            background-color: transparent;
+            box-shadow: 0px 4px 20px 10px white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            border: 2px solid white;
+            outline: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:focus {
+            background-color: green;
+            color: white;
+        }
+
+        .increment {
+            background-color: darkred;
+        }
+
+        .dincrement {
+            background-color: darkorange;
+        }
+
+        .Number {
+            background-color: darkviolet;
+        }
+
+        .settings {
+            width: 100%;
+            border: 1px solid #000;
+            position: absolute;
+            bottom: 0;
+            height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            outline: none;
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid red;
+            color: darkblue;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+        }
+    </style>
+    <div class="counter">
+        <div class="countelemnt">
+            <h1>0</h1>
+
+        </div>
+        <div class="element">
+            <button class="increment">+</button>
+            <button class="dincrement">-</button>
+            <button class="Number">0</button>
+        </div>
+    </div>
+
+    <script>
+        let increment = document.querySelector('.increment')
+        let dincrement = document.querySelector('.dincrement')
+        let number = document.querySelector('.Number')
+        let h1 = document.querySelector('h1')
+        let count = 0;
+
+
+
+
+        increment.addEventListener('click', function () {
+            count += 1;
+            h1.innerHTML = count
+        })
+        dincrement.addEventListener('click', function () {
+            count -= 1;
+            h1.innerHTML = count
+            mayFunc()
+
+        })
+        function mayFunc() {
+            if (count <= 0) {
+                count = 0
+                h1.innerHTML = count
+            }
+        }
+        number.addEventListener('click', function () {
+            count = 0;
+            h1.innerHTML = count
+        })
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

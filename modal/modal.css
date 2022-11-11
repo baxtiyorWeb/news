@@ -1,0 +1,67 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-color: #000;
+}
+.bx{
+
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+}
+.pagination{
+    width: 500px;
+    height: 500px;
+    background-color: #123;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    position: relative;
+}
+.pagination ul{
+    width: 100%;
+    height: 30px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.pagination ul li{
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    color:white;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+i{
+    color: white;
+}
+ul li:nth-child(2){
+    background-color: white;
+    color: darkblue;
+    font-size: 20px;
+}
+.bx-left-arrow{
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    bottom: 100px;
+}
+.bx-right-arrow{
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    bottom: 100px;
+    color: red;
+}
